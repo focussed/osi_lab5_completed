@@ -1,0 +1,11 @@
+#!/bin/bash
+DEV=/dev/memory
+sudo rm -f $DEV
+sudo rmmod memory
+sudo insmod memory.ko
+sudo chmod 666 $DEV
+ls -l $DEV
+echo -n 7 > $DEV
+cat $DEV
+echo "<<< expecting to see 7 printed out"
+

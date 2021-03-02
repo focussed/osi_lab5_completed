@@ -1,0 +1,13 @@
+#!/bin/bash
+DEV=/dev/memory
+echo "removing device"
+sudo rm -f $DEV
+sudo rmmod memory
+echo "inserting device"
+sudo insmod memory.ko
+sudo chmod 666 $DEV
+ls -l $DEV
+echo -n 12345 > $DEV
+cat $DEV
+echo "<<< expecting to see 12345 printed out"
+
